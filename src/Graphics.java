@@ -18,7 +18,7 @@ public class Graphics {
     frame.setTitle(name);
     frame.setSize(width, height);
     frame.setLocationRelativeTo(null);
-    frame.setIconImage(new ImageIcon(getClass().getResource("sources/images/musicNote.png")).getImage());
+    frame.setIconImage(new ImageIcon(getClass().getResource("sources/images/icon.png")).getImage());
   }
 
   public void buttonInit(JButton button, String text, int x, int y, int width, int height) {
