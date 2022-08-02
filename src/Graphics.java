@@ -33,4 +33,15 @@ public class Graphics {
     button.setFont(new Font("Agency FB", Font.BOLD, 16));
     button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
   }
+
+  public void panelInit(JPanel panel) {
+    JLabel image = new JLabel();
+    panel.add(image);
+    panel.setVisible(true);
+    panel.setBackground(Color.black);
+    image.setBounds(0, 0, 740, 150);
+    panel.setBounds(0, 0, 740, 500);
+    ImageIcon pianoImage = new ImageIcon(getClass().getResource("sources/images/piano.png"));
+    image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(740, 135, Image.SCALE_SMOOTH)));
+  }
 }
