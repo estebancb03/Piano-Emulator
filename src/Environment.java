@@ -32,20 +32,40 @@ public class Environment extends JFrame {
     this.btnPause = new JButton();
     this.btnReset = new JButton();
     this.mainPanel = new JPanel();
-    this.graphics = new Graphics();
+    this.graphics = new Graphics(this.frame, this.noteWidth, this.noteHeight);
+    this.createNotes();
     this.frame.add(this.btnStep);
     this.frame.add(this.btnStart);
     this.frame.add(this.btnPause);
     this.frame.add(this.btnReset);
     this.frame.add(this.mainPanel);
-    this.graphics.buttonInit(btnStep, "STEP", 0, 901, 196, 60);
-    this.graphics.buttonInit(btnStart, "START", 196, 901, 196, 60);
-    this.graphics.buttonInit(btnPause, "PAUSE", 392, 901, 196, 60);
-    this.graphics.buttonInit(btnReset, "RESET", 588, 901, 196, 60);
+    this.graphics.buttonInit(btnStep, "STEP", 0, 900, 206, 61);
+    this.graphics.buttonInit(btnStart, "START", 206, 900, 206, 61);
+    this.graphics.buttonInit(btnPause, "PAUSE", 412, 900, 206, 61);
+    this.graphics.buttonInit(btnReset, "RESET", 618, 900, 206, 61);
     this.graphics.panelInit(this.mainPanel);
-    this.graphics.frameInit(this.frame, "Piano Polynizer", 800, 1000);
+    this.graphics.frameInit("Piano Polynizer", 840, 1000);
     this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+  }
 
-    notes = new Note[this.rows][this.columns];
+  private void createNotes() {
+    int x = 16;
+    int y = 890;
+    this.notes = new Note[this.rows][this.columns];
+    for(int row = 0; row < this.rows; ++row) {
+      for(int column = 0; column < this.columns; ++column) {
+        Note note = new Note(Color.DARK_GRAY, new JPanel(), x, y, 0);
+        JPanel panel = note.getPanel();
+        this.frame.add(panel);
+        panel.setVisible(true);
+        panel.setBackground(Color.red);
+        panel.setBounds(x, y, this.noteWidth, this.noteHeight);
+        this.notes[row][column] = note;
+        this.graphics.addNote(note, x, y);
+        x += this.noteWidth;
+      }
+      x = 16;
+      y -= this.noteHeight;
+    }
   }
 }
