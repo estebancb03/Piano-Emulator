@@ -9,6 +9,8 @@ public class Environment extends JFrame {
   /// Properties
   private int rows;
   private int columns;
+  private int noteWidth;
+  private int noteHeight;
   private JFrame frame;
   private JButton btnStep;
   private JButton btnStart;
@@ -17,9 +19,13 @@ public class Environment extends JFrame {
   private JPanel mainPanel;
   private Graphics graphics;
 
-  public Environment(int rows, int columns) {
+  private Note[][] notes;
+
+  public Environment(int rows, int columns, int noteWidth, int noteHeight) {
     this.rows = rows;
     this.columns = columns;
+    this.noteWidth = noteWidth;
+    this.noteHeight = noteHeight;
     this.frame = new JFrame();
     this.btnStep = new JButton();
     this.btnStart = new JButton();
@@ -39,5 +45,7 @@ public class Environment extends JFrame {
     this.graphics.panelInit(this.mainPanel);
     this.graphics.frameInit(this.frame, "Piano Polynizer", 800, 1000);
     this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+    notes = new Note[this.rows][this.columns];
   }
 }
