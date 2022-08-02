@@ -21,4 +21,16 @@ public class Graphics {
     frame.setLocationRelativeTo(null);
     frame.setIconImage(new ImageIcon(getClass().getResource("sources/images/musicNote.png")).getImage());
   }
+
+  public void buttonInit(JButton button, String text, int x, int y, int width, int height) {
+    button.setText(text);
+    button.setBorder(null);
+    button.setVisible(true);
+    button.setFocusable(false);
+    button.setBackground(Color.black);
+    button.setForeground(Color.white);
+    button.setBounds(x, y, width, height);
+    button.setFont(new Font("Agency FB", Font.BOLD, 16));
+    button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+  }
 }
