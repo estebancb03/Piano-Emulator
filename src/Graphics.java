@@ -12,11 +12,11 @@ public class Graphics {
 
   }
 
-  public void frameInit(JFrame frame) {
+  public void frameInit(JFrame frame, String name) {
     frame.setVisible(true);
     frame.setBackground(Color.black);
     frame.setResizable(false);
-    frame.setTitle("Piano");
+    frame.setTitle(name);
     frame.setSize(740, 755);
     frame.setLocationRelativeTo(null);
     frame.setIconImage(new ImageIcon(getClass().getResource("sources/images/musicNote.png")).getImage());

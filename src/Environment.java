@@ -37,7 +37,7 @@ public class Environment extends JFrame {
     this.graphics.buttonInit(btnPause, "PAUSE", 362, 675, 181, 40);
     this.graphics.buttonInit(btnReset, "RESET", 543, 675, 181, 40);
     this.graphics.panelInit(this.mainPanel);
-    this.graphics.frameInit(this.frame);
+    this.graphics.frameInit(this.frame, "Piano Polynizer");
     this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 }
