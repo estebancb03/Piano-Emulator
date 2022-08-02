@@ -20,9 +20,14 @@ public class Environment extends JFrame {
   public Environment(int rows, int columns) {
     this.rows = rows;
     this.columns = columns;
-    graphics = new Graphics();
     this.frame = new JFrame();
-    graphics.frameInit(this.frame);
+    this.btnStep = new JButton();
+    this.btnStart = new JButton();
+    this.btnPause = new JButton();
+    this.btnReset = new JButton();
+    this.mainPanel = new JPanel();
+    this.graphics = new Graphics();
+    this.graphics.frameInit(this.frame);
     this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 }
