@@ -7,25 +7,30 @@ import javax.swing.*;
 
 public class Graphics {
   /// Properties
+  private JFrame frame;
+  private int noteWidth;
+  private int noteHeight;
 
-  public Graphics() {
-
+  public Graphics(JFrame frame, int noteWidth, int noteHeight) {
+    this.frame = frame;
+    this.noteWidth = noteWidth;
+    this.noteHeight = noteHeight;
   }
 
-  public void frameInit(JFrame frame, String name, int width, int height) {
-    frame.setVisible(true);
-    frame.setResizable(false);
-    frame.setTitle(name);
-    frame.setSize(width, height);
-    frame.setLocationRelativeTo(null);
-    frame.setIconImage(new ImageIcon(getClass().getResource("sources/images/icon.png")).getImage());
+  public void frameInit(String name, int width, int height) {
+    this.frame.setVisible(true);
+    this.frame.setResizable(false);
+    this.frame.setTitle(name);
+    this.frame.setSize(width, height);
+    this.frame.setLocationRelativeTo(null);
+    this.frame.setIconImage(new ImageIcon(getClass().getResource("sources/images/icon.png")).getImage());
   }
 
   public void buttonInit(JButton button, String text, int x, int y, int width, int height) {
     button.setText(text);
     button.setBorder(null);
     button.setVisible(true);
-   button.setFocusable(false);
+    button.setFocusable(false);
     button.setBackground(Color.black);
     button.setForeground(Color.white);
     button.setBounds(x, y, width, height);
@@ -41,6 +46,14 @@ public class Graphics {
     image.setBounds(0, 0, 800, 150);
     panel.setBounds(0, 0, 800, 500);
     ImageIcon pianoImage = new ImageIcon(getClass().getResource("sources/images/piano.png"));
-    image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(800, 135, Image.SCALE_SMOOTH)));
+    image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(830, 135, Image.SCALE_SMOOTH)));
+  }
+
+  public void addNote(Note note, int x, int y) {
+    JPanel panel = note.getPanel();
+    this.frame.add(panel);
+    panel.setVisible(true);
+    panel.setBackground(note.getColor());
+    panel.setBounds(x, y, this.noteWidth, this.noteHeight);
   }
 }
