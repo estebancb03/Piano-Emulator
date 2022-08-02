@@ -12,12 +12,11 @@ public class Graphics {
 
   }
 
-  public void frameInit(JFrame frame, String name) {
+  public void frameInit(JFrame frame, String name, int width, int height) {
     frame.setVisible(true);
-    frame.setBackground(Color.black);
-    frame.setResizable(false);
+    // frame.setResizable(false);
     frame.setTitle(name);
-    frame.setSize(740, 755);
+    frame.setSize(width, height);
     frame.setLocationRelativeTo(null);
     frame.setIconImage(new ImageIcon(getClass().getResource("sources/images/musicNote.png")).getImage());
   }
@@ -26,7 +25,7 @@ public class Graphics {
     button.setText(text);
     button.setBorder(null);
     button.setVisible(true);
-    button.setFocusable(false);
+   // button.setFocusable(false);
     button.setBackground(Color.black);
     button.setForeground(Color.white);
     button.setBounds(x, y, width, height);
@@ -38,10 +37,10 @@ public class Graphics {
     JLabel image = new JLabel();
     panel.add(image);
     panel.setVisible(true);
-    panel.setBackground(Color.black);
-    image.setBounds(0, 0, 740, 150);
-    panel.setBounds(0, 0, 740, 500);
+    panel.setBackground(Color.lightGray);
+    image.setBounds(0, 0, 800, 150);
+    panel.setBounds(0, 0, 800, 500);
     ImageIcon pianoImage = new ImageIcon(getClass().getResource("sources/images/piano.png"));
-    image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(740, 135, Image.SCALE_SMOOTH)));
+    image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(800, 135, Image.SCALE_SMOOTH)));
   }
 }

@@ -32,12 +32,12 @@ public class Environment extends JFrame {
     this.frame.add(this.btnPause);
     this.frame.add(this.btnReset);
     this.frame.add(this.mainPanel);
-    this.graphics.buttonInit(btnStep, "STEP", 0, 675, 181, 40);
-    this.graphics.buttonInit(btnStart, "START", 181, 675, 181, 40);
-    this.graphics.buttonInit(btnPause, "PAUSE", 362, 675, 181, 40);
-    this.graphics.buttonInit(btnReset, "RESET", 543, 675, 181, 40);
+    this.graphics.buttonInit(btnStep, "STEP", 0, 901, 196, 60);
+    this.graphics.buttonInit(btnStart, "START", 196, 901, 196, 60);
+    this.graphics.buttonInit(btnPause, "PAUSE", 392, 901, 196, 60);
+    this.graphics.buttonInit(btnReset, "RESET", 588, 901, 196, 60);
     this.graphics.panelInit(this.mainPanel);
-    this.graphics.frameInit(this.frame, "Piano Polynizer");
+    this.graphics.frameInit(this.frame, "Piano Polynizer", 800, 1000);
     this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 }
