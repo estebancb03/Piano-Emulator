@@ -40,13 +40,12 @@ public class Graphics {
 
   public void panelInit(JPanel panel) {
     JLabel image = new JLabel();
+    panel.add(new JLabel("    "));
     panel.add(image);
     panel.setVisible(true);
-    panel.setBackground(Color.lightGray);
-    image.setBounds(0, 0, 800, 150);
-    panel.setBounds(0, 0, 800, 500);
+    panel.setBackground(Color.white);
     ImageIcon pianoImage = new ImageIcon(getClass().getResource("sources/images/piano.png"));
-    image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(830, 135, Image.SCALE_SMOOTH)));
+    image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(830, 145, Image.SCALE_SMOOTH)));
   }
 
   public void addNote(Note note, int x, int y) {

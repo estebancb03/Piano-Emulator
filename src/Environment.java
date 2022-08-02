@@ -39,22 +39,22 @@ public class Environment extends JFrame {
     this.frame.add(this.btnPause);
     this.frame.add(this.btnReset);
     this.frame.add(this.mainPanel);
-    this.graphics.buttonInit(btnStep, "STEP", 0, 900, 206, 61);
-    this.graphics.buttonInit(btnStart, "START", 206, 900, 206, 61);
-    this.graphics.buttonInit(btnPause, "PAUSE", 412, 900, 206, 61);
-    this.graphics.buttonInit(btnReset, "RESET", 618, 900, 206, 61);
+    this.graphics.buttonInit(btnStep, "STEP", 0, 953, 206, 58);
+    this.graphics.buttonInit(btnStart, "START", 206, 953, 206, 58);
+    this.graphics.buttonInit(btnPause, "PAUSE", 412, 953, 206, 58);
+    this.graphics.buttonInit(btnReset, "RESET", 618, 953, 206, 58);
     this.graphics.panelInit(this.mainPanel);
-    this.graphics.frameInit("Piano Polynizer", 840, 1000);
+    this.graphics.frameInit("Piano Polynizer", 840, 1050);
     this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 
   private void createNotes() {
     int x = 16;
-    int y = 890;
+    int y = 930;
     this.notes = new Note[this.rows][this.columns];
     for(int row = 0; row < this.rows; ++row) {
       for(int column = 0; column < this.columns; ++column) {
-        Note note = new Note(Color.DARK_GRAY, new JPanel(), x, y, 0);
+        Note note = new Note(Color.black, new JPanel(), x, y, 0);
         JPanel panel = note.getPanel();
         this.frame.add(panel);
         panel.setVisible(true);
