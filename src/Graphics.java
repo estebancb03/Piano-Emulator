@@ -14,7 +14,7 @@ public class Graphics {
 
   public void frameInit(JFrame frame, String name, int width, int height) {
     frame.setVisible(true);
-    // frame.setResizable(false);
+    frame.setResizable(false);
     frame.setTitle(name);
     frame.setSize(width, height);
     frame.setLocationRelativeTo(null);
@@ -25,7 +25,7 @@ public class Graphics {
     button.setText(text);
     button.setBorder(null);
     button.setVisible(true);
-   // button.setFocusable(false);
+   button.setFocusable(false);
     button.setBackground(Color.black);
     button.setForeground(Color.white);
     button.setBounds(x, y, width, height);
