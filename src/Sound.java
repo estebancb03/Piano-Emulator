@@ -2,7 +2,6 @@
 /// This code is released under the GNU Public License version 3
 /// @author Esteban Castañeda Blanco <esteban.castaneda@ucr.ac.cr>
 
-import java.io.File;
 import java.nio.file.*;
 import java.io.IOException;
 
