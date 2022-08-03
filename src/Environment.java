@@ -22,6 +22,7 @@ public class Environment extends JFrame {
   private JButton btnReset;
   private JPanel mainPanel;
 
+  private Sound sound;
   private Graphics graphics;
   private Timer timer;
 
@@ -42,7 +43,12 @@ public class Environment extends JFrame {
     this.btnPause = new JButton();
     this.btnReset = new JButton();
     this.mainPanel = new JPanel();
+    this.sound = new Sound("src/sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
     this.graphics = new Graphics(this.frame);
+    this.binaryNotes = this.sound.getData();
+    this.timer = new Timer(20, e -> this.oneStep());
+    this.step();
+    this.start();
     this.createNotes();
     this.createIntesityBar();
     this.graphics.buttonInit(btnStep, "STEP", 0, 945, 206, 66);
@@ -108,37 +114,47 @@ public class Environment extends JFrame {
     return answer;
   }
 
+  private void oneStep() {
+    Note currentNote;
+    Note father;
+    Note lastNote;
+    Note intensityNote;
+    for (int column = 0; column < this.columns; ++column) {  
+      for (int row = this.rows - 1; row > 0; --row) {
+        currentNote = this.notes[row][column];
+        father = this.notes[row - 1][column];
+        lastNote = this.notes[this.rows - 1][column];
+        intensityNote = this.intensityBar[column];
+        this.graphics.inheritNoteProperties(currentNote, father);
+        this.graphics.manageIntensity(lastNote, intensityNote, this.noteWidth);
+      }
+      try {
+        if (this.control >= this.binaryNotes.length) {
+          ImageIcon icon = new ImageIcon(getClass().getResource("sources/icon.png"));
+            JOptionPane.showMessageDialog(null, "The song is over, press start to play again",
+              "Information",JOptionPane.INFORMATION_MESSAGE, icon);
+          this.resetEnvironment();
+          break;
+        } else {
+          ++this.control;
+          boolean isBlackNote = this.validateBlackNote(column);
+          this.graphics.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
+        }
+      } catch (Exception e) {
+        System.out.println(e);
+      }
+    }
+  }
+
   private void step() {
     this.btnStep.addActionListener(evt -> {
-      Note currentNote;
-      Note father;
-      Note lastNote;
-      Note intensityNote;
-      for (int column = 0; column < this.columns; ++column) {  
-        for (int row = this.rows - 1; row > 0; --row) {
-          currentNote = this.notes[row][column];
-          father = this.notes[row - 1][column];
-          lastNote = this.notes[this.rows - 1][column];
-          intensityNote = this.intensityBar[column];
-          this.graphics.inheritNoteProperties(currentNote, father);
-          this.graphics.manageIntensity(lastNote, intensityNote, this.noteWidth);
-        }
-        try {
-          if (this.control >= this.binaryNotes.length) {
-            ImageIcon icon = new ImageIcon(getClass().getResource("sources/icon.png"));
-              JOptionPane.showMessageDialog(null, "The song is over, press start to play again",
-                "Information",JOptionPane.INFORMATION_MESSAGE, icon);
-            this.resetEnvironment();
-            break;
-          } else {
-            ++this.control;
-            boolean isBlackNote = this.validateBlackNote(column);
-            this.graphics.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
-          }
-        } catch (Exception e) {
-          System.out.println(e);
-        }
-      }
+      this.oneStep();
+    });
+  }
+
+  private void start() {
+    this.btnStart.addActionListener(evt -> {
+      this.timer.start();
     });
   }
   
