@@ -50,6 +50,7 @@ public class Environment extends JFrame {
     this.step();
     this.start();
     this.pause();
+    this.reset();
     this.createNotes();
     this.createIntesityBar();
     this.graphics.buttonInit(btnStep, "STEP", 0, 945, 206, 66);
@@ -100,7 +101,8 @@ public class Environment extends JFrame {
         this.graphics.resetRegularNote(regularNote, Color.black, 0);
       }
       intensityNote = this.intensityBar[column];
-      this.graphics.resetIntensityBarNote(intensityNote, Color.black, 0, intensityNote.getX(), 0, this.noteWidth, 45);
+      this.graphics.resetIntensityBarNote(intensityNote, Color.black, 0, intensityNote.getX(), 
+        intensityNote.getIntensity(), this.noteWidth, this.noteHeight);
     }
   }
 
@@ -165,4 +167,9 @@ public class Environment extends JFrame {
     });
   }
   
+  private void reset() {
+    this.btnReset.addActionListener(evt -> {
+      this.resetEnvironment();
+    });
+  }
 }
