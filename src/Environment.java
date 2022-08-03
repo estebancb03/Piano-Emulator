@@ -82,6 +82,21 @@ public class Environment extends JFrame {
     }
   }
 
+  private void resetEnvironment() {
+    this.timer.stop();
+    this.control = 0;
+    Note regularNote;
+    Note intensityNote;
+    for (int column = 0; column < this.columns; ++column) {
+      for (int row = 0; row < this.rows; ++row) {
+        regularNote = this.notes[row][column];
+        this.graphics.resetRegularNote(regularNote, Color.black, 0);
+      }
+      intensityNote = this.intensityBar[column];
+      this.graphics.resetIntensityBarNote(intensityNote, Color.black, 0, intensityNote.getX(), 0, this.noteWidth, 45);
+    }
+  }
+
   private boolean validateBlackNote(int number) {
     boolean answer = false;
     for (int index : this.blackNotes) {
@@ -113,7 +128,7 @@ public class Environment extends JFrame {
             ImageIcon icon = new ImageIcon(getClass().getResource("sources/icon.png"));
               JOptionPane.showMessageDialog(null, "The song is over, press start to play again",
                 "Information",JOptionPane.INFORMATION_MESSAGE, icon);
-            // this.resetEnvironment();
+            this.resetEnvironment();
             break;
           } else {
             ++this.control;
