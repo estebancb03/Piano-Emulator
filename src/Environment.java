@@ -82,6 +82,17 @@ public class Environment extends JFrame {
     }
   }
 
+  private boolean validateBlackNote(int number) {
+    boolean answer = false;
+    for (int index : this.blackNotes) {
+      if (number == index) {
+        answer = true;
+        break;
+      }
+    }
+    return answer;
+  }
+
   private void step() {
     this.btnStep.addActionListener(evt -> {
       Note currentNote;
@@ -106,7 +117,7 @@ public class Environment extends JFrame {
             break;
           } else {
             ++this.control;
-            //Boolean isBlackNote = this.validateBlackNote();
+            boolean isBlackNote = this.validateBlackNote(column);
             this.graphics.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
           }
         } catch (Exception e) {
