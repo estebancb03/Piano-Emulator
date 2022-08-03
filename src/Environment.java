@@ -78,12 +78,12 @@ public class Environment extends JFrame {
 
   private void createIntesityBar() {
     int x = 16;
-    int y = 5;
+    int y = 39;
     this.intensityBar = new Note[this.columns];
     for (int column = 0; column < this.columns; ++column){
       Note note = new Note(Color.black, new JPanel(), x, y, 0);
       this.intensityBar[column] = note;
-      graphics.addNote(note, x, y, this.noteWidth, 45);
+      graphics.addNote(note, x, y, this.noteWidth, this.noteHeight);
       x += noteWidth;
     }
   }
