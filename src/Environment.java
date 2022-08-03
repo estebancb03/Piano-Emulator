@@ -43,7 +43,7 @@ public class Environment extends JFrame {
     this.btnPause = new JButton();
     this.btnReset = new JButton();
     this.mainPanel = new JPanel();
-    this.sound = new Sound("src/sources/Avicii - Waiting for love (440 Hz).poly");
+    this.sound = new Sound("src/sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
     this.graphics = new Graphics(this.frame);
     this.binaryNotes = this.sound.getData();
     this.timer = new Timer(20, e -> this.oneStep());
@@ -132,16 +132,16 @@ public class Environment extends JFrame {
         this.graphics.manageIntensity(lastNote, intensityNote, this.noteWidth);
       }
       try {
-        if (this.control >= this.binaryNotes.length) {
-          ImageIcon icon = new ImageIcon(getClass().getResource("sources/icon.png"));
-            JOptionPane.showMessageDialog(null, "The song is over, press start to play again",
-              "Information",JOptionPane.INFORMATION_MESSAGE, icon);
-          this.resetEnvironment();
-          break;
-        } else {
+        if (this.control < this.binaryNotes.length - 88) {
           ++this.control;
           boolean isBlackNote = this.validateBlackNote(column);
           this.graphics.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
+        } else {
+          ImageIcon icon = new ImageIcon(getClass().getResource("sources/images/icon.png"));
+          JOptionPane.showMessageDialog(null, "The song is over, press start to play again",
+            "Information",JOptionPane.INFORMATION_MESSAGE, icon);
+          this.resetEnvironment();
+          break;
         }
       } catch (Exception e) {
         System.out.println(e);
