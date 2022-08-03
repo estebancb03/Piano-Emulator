@@ -11,7 +11,9 @@ public class Environment extends JFrame {
   private int columns;
   private int noteWidth;
   private int noteHeight;
+  private int control;
   private int[] blackNotes;
+  private byte[] binaryNotes;
 
   private JFrame frame;
   private JButton btnStep;
@@ -31,6 +33,7 @@ public class Environment extends JFrame {
     this.columns = columns;
     this.noteWidth = noteWidth;
     this.noteHeight = noteHeight;
+    this.control = 0;
     this.blackNotes = new int[] { 1,4,6,9,11,13,16,18,21,23,25,28,30,33,35,37,40,42,45,
       47,49,52,54,57,59,61,64,66,69,71,73,76,78,81,83,85 };
     this.frame = new JFrame();
@@ -79,5 +82,38 @@ public class Environment extends JFrame {
     }
   }
 
+  private void step() {
+    this.btnStep.addActionListener(evt -> {
+      Note currentNote;
+      Note father;
+      Note lastNote;
+      Note intensityNote;
+      for (int column = 0; column < this.columns; ++column) {  
+        for (int row = this.rows - 1; row > 0; --row) {
+          currentNote = this.notes[row][column];
+          father = this.notes[row - 1][column];
+          lastNote = this.notes[this.rows - 1][column];
+          intensityNote = this.intensityBar[column];
+          this.graphics.inheritNoteProperties(currentNote, father);
+          this.graphics.manageIntensity(lastNote, intensityNote, this.noteWidth);
+        }
+        try {
+          if (this.control >= this.binaryNotes.length) {
+            ImageIcon icon = new ImageIcon(getClass().getResource("sources/icon.png"));
+              JOptionPane.showMessageDialog(null, "The song is over, press start to play again",
+                "Information",JOptionPane.INFORMATION_MESSAGE, icon);
+            // this.resetEnvironment();
+            break;
+          } else {
+            ++this.control;
+            //Boolean isBlackNote = this.validateBlackNote();
+            this.graphics.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
+          }
+        } catch (Exception e) {
+          System.out.println(e);
+        }
+      }
+    });
+  }
   
 }
