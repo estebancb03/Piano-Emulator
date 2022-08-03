@@ -4,6 +4,8 @@
 
 import java.awt.*;
 import javax.swing.*;
+import java.nio.file.*;
+import java.io.IOException;
 
 public class Environment extends JFrame {
   /// Properties
@@ -22,7 +24,6 @@ public class Environment extends JFrame {
   private JButton btnReset;
   private JPanel mainPanel;
 
-  private Sound sound;
   private Graphics graphics;
   private Timer timer;
 
@@ -43,9 +44,8 @@ public class Environment extends JFrame {
     this.btnPause = new JButton();
     this.btnReset = new JButton();
     this.mainPanel = new JPanel();
-    this.sound = new Sound("src/sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
+    this.readData("src/sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
     this.graphics = new Graphics(this.frame);
-    this.binaryNotes = this.sound.getData();
     this.timer = new Timer(20, e -> this.oneStep());
     this.step();
     this.start();
@@ -60,6 +60,15 @@ public class Environment extends JFrame {
     this.graphics.mainPanelInit(this.mainPanel);
     this.graphics.frameInit("Piano Polynizer", 840, 1050);
     this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+  }
+
+  private void readData(String route) {
+    Path path = Paths.get(route);
+    try {
+      this.binaryNotes = Files.readAllBytes(path);
+    } catch (IOException e) {
+      System.out.println(e);
+    }
   }
 
   private void createNotes() {
