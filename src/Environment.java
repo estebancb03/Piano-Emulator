@@ -12,13 +12,16 @@ public class Environment extends JFrame {
   private int noteWidth;
   private int noteHeight;
   private int[] blackNotes;
+
   private JFrame frame;
   private JButton btnStep;
   private JButton btnStart;
   private JButton btnPause;
   private JButton btnReset;
   private JPanel mainPanel;
+
   private Graphics graphics;
+  private Timer timer;
 
   private Note[][] notes;
   private Note[] intensityBar;
@@ -75,4 +78,6 @@ public class Environment extends JFrame {
       x += noteWidth;
     }
   }
+
+  
 }
