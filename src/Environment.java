@@ -43,7 +43,7 @@ public class Environment extends JFrame {
     this.btnPause = new JButton();
     this.btnReset = new JButton();
     this.mainPanel = new JPanel();
-    this.sound = new Sound("src/sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
+    this.sound = new Sound("src/sources/Avicii - Waiting for love (440 Hz).poly");
     this.graphics = new Graphics(this.frame);
     this.binaryNotes = this.sound.getData();
     this.timer = new Timer(20, e -> this.oneStep());

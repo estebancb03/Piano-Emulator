@@ -86,7 +86,7 @@ public class Graphics {
   }
 
   public void manageIntensity(Note regularNote, Note intensityBarNote, int width) {
-    int newHeight = 45 * regularNote.getIntensity() / 255;
+    int newHeight = 40 * regularNote.getIntensity() / 255;
     intensityBarNote.setColor(regularNote.getColor());
     intensityBarNote.setIntensity(regularNote.getIntensity());
     intensityBarNote.getPanel().setBackground(regularNote.getColor());
