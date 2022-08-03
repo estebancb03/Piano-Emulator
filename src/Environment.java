@@ -11,6 +11,7 @@ public class Environment extends JFrame {
   private int columns;
   private int noteWidth;
   private int noteHeight;
+  private int[] blackNotes;
   private JFrame frame;
   private JButton btnStep;
   private JButton btnStart;
@@ -27,6 +28,8 @@ public class Environment extends JFrame {
     this.columns = columns;
     this.noteWidth = noteWidth;
     this.noteHeight = noteHeight;
+    this.blackNotes = new int[] { 1,4,6,9,11,13,16,18,21,23,25,28,30,33,35,37,40,42,45,
+      47,49,52,54,57,59,61,64,66,69,71,73,76,78,81,83,85 };
     this.frame = new JFrame();
     this.btnStep = new JButton();
     this.btnStart = new JButton();
