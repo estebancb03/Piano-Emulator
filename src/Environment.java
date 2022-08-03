@@ -49,6 +49,7 @@ public class Environment extends JFrame {
     this.timer = new Timer(20, e -> this.oneStep());
     this.step();
     this.start();
+    this.pause();
     this.createNotes();
     this.createIntesityBar();
     this.graphics.buttonInit(btnStep, "STEP", 0, 945, 206, 66);
@@ -155,6 +156,12 @@ public class Environment extends JFrame {
   private void start() {
     this.btnStart.addActionListener(evt -> {
       this.timer.start();
+    });
+  }
+
+  private void pause() {
+    this.btnPause.addActionListener(evt -> {
+      this.timer.stop();
     });
   }
   
