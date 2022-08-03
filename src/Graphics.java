@@ -60,4 +60,10 @@ public class Graphics {
     note.getPanel().setBackground(color);
     note.getPanel().setLocation(note.getX(), note.getY());
   }
+
+  public void inheritProperties(Note note, Note father) {
+    note.setColor(father.getColor());
+    note.setIntensity(father.getIntensity());
+    note.getPanel().setBackground(father.getColor());
+  }
 }
