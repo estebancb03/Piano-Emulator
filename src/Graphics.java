@@ -54,10 +54,18 @@ public class Graphics {
     panel.setBounds(x, y, width, height);
   }
 
-  public void resetNote(Note note, Color color, int intensity) {
+  public void resetRegularNote(Note note, Color color, int intensity) {
     note.setColor(color);
     note.setIntensity(intensity);
     note.getPanel().setBackground(color);
+    note.getPanel().setLocation(note.getX(), note.getY());
+  }
+
+  public void resetIntensityBarNote(Note note, Color color, int intensity, int x, int y, int width, int height) {
+    note.setColor(color);
+    note.setIntensity(intensity);
+    note.getPanel().setBackground(color);
+    note.getPanel().setSize(width, height);
     note.getPanel().setLocation(note.getX(), note.getY());
   }
 
