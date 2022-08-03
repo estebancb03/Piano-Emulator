@@ -69,7 +69,17 @@ public class Graphics {
     note.getPanel().setLocation(note.getX(), note.getY());
   }
 
-  public void inheritProperties(Note note, Note father) {
+  public void changeNoteColor(Note note, byte binary, Boolean isBlackNote) {
+    Color background;
+    int number = binary & 0b11111111; /// The mask is added to the binary number
+    background = isBlackNote ? new Color(240 * number / 256, 128 * number /256, 128 * number / 256)
+                             : new Color(0 / 256, 191 * number /256, 255 * number / 256);
+    note.setColor(background);
+    note.setIntensity(number);
+    note.getPanel().setBackground(background);
+  }
+
+  public void inheritNoteProperties(Note note, Note father) {
     note.setColor(father.getColor());
     note.setIntensity(father.getIntensity());
     note.getPanel().setBackground(father.getColor());
