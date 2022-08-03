@@ -41,7 +41,7 @@ public class Graphics {
     JLabel image = new JLabel();
     panel.add(image);
     panel.setVisible(true);
-    panel.setBackground(Color.white);
+    panel.setBackground(Color.black);
     ImageIcon pianoImage = new ImageIcon(getClass().getResource("sources/images/piano.png"));
     image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(828, 155, Image.SCALE_SMOOTH)));
   }
@@ -86,7 +86,7 @@ public class Graphics {
   }
 
   public void manageIntensity(Note regularNote, Note intensityBarNote, int width) {
-    int newHeight = 70 * regularNote.getIntensity() / 255;
+    int newHeight = 45 * regularNote.getIntensity() / 255;
     intensityBarNote.setColor(regularNote.getColor());
     intensityBarNote.setIntensity(regularNote.getIntensity());
     intensityBarNote.getPanel().setBackground(regularNote.getColor());
