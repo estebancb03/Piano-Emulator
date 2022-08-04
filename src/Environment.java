@@ -37,7 +37,7 @@ public class Environment {
   private JButton btnPause;
   /// Button  that resets the song
   private JButton btnReset;
-  /// Timer object
+  /// Timer object that handles the events
   private Timer timer;
   /// Graphics object
   private Graphics graphics;
@@ -81,7 +81,7 @@ public class Environment {
     this.graphics.buttonInit(btnPause, "PAUSE", 412, 945, 206, 66);
     this.graphics.buttonInit(btnReset, "RESET", 618, 945, 206, 66);
     this.graphics.mainPanelInit(this.mainPanel);
-    this.graphics.frameInit("Piano Polynizer", 840, 1050);
+    this.graphics.frameInit("Piano Emulator", 840, 1050);
   }
 
   /**
