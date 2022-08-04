@@ -7,29 +7,52 @@ import javax.swing.*;
 import java.nio.file.*;
 import java.io.IOException;
 
-public class Environment extends JFrame {
-  /// Properties
+/**
+ * @brief Class that handles the algorithms and modification of arrays and arrays
+ */
+public class Environment {
+  /// Number of rows
   private int rows;
+  /// Number of columns
   private int columns;
+  /// Width of the note's JPanel
   private int noteWidth;
+  /// Height of the note's JPanel
   private int noteHeight;
+  /// Indicates the current possition in the binat notes array
   private int control;
+  /// Array with the black notes columns
   private int[] blackNotes;
+  /// Array with all song's notes
   private byte[] binaryNotes;
-
+  /// Window's frame
   private JFrame frame;
-  private JButton btnStep;
-  private JButton btnStart;
-  private JButton btnPause;
-  private JButton btnReset;
+  /// Main JPanel
   private JPanel mainPanel;
-
-  private Graphics graphics;
+  /// Button that advances a step of the song
+  private JButton btnStep;
+  /// Button that starts the song
+  private JButton btnStart;
+  /// Button that pauses the song
+  private JButton btnPause;
+  /// Button  that resets the song
+  private JButton btnReset;
+  /// Timer object
   private Timer timer;
-
-  private Note[][] notes;
+  /// Graphics object
+  private Graphics graphics;
+  /// Note's array for the intensity bar
   private Note[] intensityBar;
+  /// Note's matrix
+  private Note[][] notes;
 
+  /**
+   * @brief Constructor
+   * @param rows Number of rows
+   * @param columns Number of columns
+   * @param noteWidth Width of note's panel
+   * @param noteHeight Height of note's panel
+   */
   public Environment(int rows, int columns, int noteWidth, int noteHeight) {
     this.rows = rows;
     this.columns = columns;
@@ -59,9 +82,12 @@ public class Environment extends JFrame {
     this.graphics.buttonInit(btnReset, "RESET", 618, 945, 206, 66);
     this.graphics.mainPanelInit(this.mainPanel);
     this.graphics.frameInit("Piano Polynizer", 840, 1050);
-    this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 
+  /**
+   * @brief Method that reads the data of a .poly file
+   * @param route File's route
+   */
   private void readData(String route) {
     Path path = Paths.get(route);
     try {
@@ -71,6 +97,9 @@ public class Environment extends JFrame {
     }
   }
 
+  /**
+   * @brief Method that creates a new note and shows it in the screen
+   */
   private void createNotes() {
     int x = 16;
     int y = 930;
@@ -87,6 +116,10 @@ public class Environment extends JFrame {
     }
   }
 
+  /**
+   * @brief Method that creates a new note of the intensity bar and 
+   *        shows it in the screen
+   */
   private void createIntesityBar() {
     int x = 16;
     int y = 39;
@@ -99,6 +132,9 @@ public class Environment extends JFrame {
     }
   }
 
+  /**
+   * @brief Method that resets all elements to their initial state
+   */
   private void resetEnvironment() {
     this.timer.stop();
     this.control = 0;
@@ -115,6 +151,11 @@ public class Environment extends JFrame {
     }
   }
 
+  /**
+   * @brief Method that checks if a note is a black one or not
+   * @param number Column number
+   * @return boolean
+   */
   private boolean validateBlackNote(int number) {
     boolean answer = false;
     for (int index : this.blackNotes) {
@@ -126,6 +167,10 @@ public class Environment extends JFrame {
     return answer;
   }
 
+  /**
+   * @brief Method that advances 88 notes of the song and applies the 
+   *        corresponding changes in the frame
+   */
   private void oneStep() {
     Note currentNote;
     Note father;
@@ -158,24 +203,36 @@ public class Environment extends JFrame {
     }
   }
 
+  /**
+   * @brief Method that handles the step's event
+   */
   private void step() {
     this.btnStep.addActionListener(evt -> {
       this.oneStep();
     });
   }
 
+  /**
+   * @brief Method that handles the start's event
+   */
   private void start() {
     this.btnStart.addActionListener(evt -> {
       this.timer.start();
     });
   }
 
+  /**
+   * @brief Method that handles the pause's event
+   */
   private void pause() {
     this.btnPause.addActionListener(evt -> {
       this.timer.stop();
     });
   }
   
+  /**
+   * @brief Method that handles the reset's event
+   */
   private void reset() {
     this.btnReset.addActionListener(evt -> {
       this.resetEnvironment();
