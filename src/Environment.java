@@ -67,7 +67,7 @@ public class Environment {
     this.btnPause = new JButton();
     this.btnReset = new JButton();
     this.mainPanel = new JPanel();
-    this.readData("src/sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
+    this.readData("sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
     this.graphics = new Graphics(this.frame);
     this.timer = new Timer(20, e -> this.oneStep());
     this.step();
@@ -191,7 +191,7 @@ public class Environment {
           boolean isBlackNote = this.validateBlackNote(column);
           this.graphics.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
         } else {
-          ImageIcon icon = new ImageIcon(getClass().getResource("sources/images/icon.png"));
+          ImageIcon icon = new ImageIcon(getClass().getResource("images/icon.png"));
           JOptionPane.showMessageDialog(null, "The song is over, press start to play again",
             "Information",JOptionPane.INFORMATION_MESSAGE, icon);
           this.resetEnvironment();

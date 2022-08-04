@@ -32,7 +32,7 @@ public class Graphics extends JFrame {
     this.frame.setTitle(name);
     this.frame.setSize(width, height);
     this.frame.setLocationRelativeTo(null);
-    this.frame.setIconImage(new ImageIcon(getClass().getResource("sources/images/icon.png")).getImage());
+    this.frame.setIconImage(new ImageIcon(getClass().getResource("images/icon.png")).getImage());
     this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 
@@ -69,7 +69,7 @@ public class Graphics extends JFrame {
     panel.add(image);
     panel.setVisible(true);
     panel.setBackground(Color.black);
-    ImageIcon pianoImage = new ImageIcon(getClass().getResource("sources/images/piano.png"));
+    ImageIcon pianoImage = new ImageIcon(getClass().getResource("images/piano.png"));
     image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(828, 155, Image.SCALE_SMOOTH)));
   }
 
