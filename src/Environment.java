@@ -186,7 +186,7 @@ public class Environment {
         this.graphics.handleIntensity(lastNote, intensityNote, this.noteWidth);
       }
       try {
-        if (this.control < this.binaryNotes.length - 88) {
+        if (this.control < this.binaryNotes.length) {
           ++this.control;
           boolean isBlackNote = this.validateBlackNote(column);
           this.graphics.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
@@ -197,9 +197,7 @@ public class Environment {
           this.resetEnvironment();
           break;
         }
-      } catch (Exception e) {
-        System.out.println(e);
-      }
+      } catch (Exception e) { }
     }
   }
 
