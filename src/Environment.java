@@ -30,13 +30,13 @@ public class Environment {
   /// Main JPanel
   private JPanel mainPanel;
   /// Button that advances a step of the song
-  private JButton btnStep;
+  private JButton stepButton;
   /// Button that starts the song
-  private JButton btnStart;
+  private JButton playButton;
   /// Button that pauses the song
-  private JButton btnPause;
+  private JButton pauseButton;
   /// Button  that resets the song
-  private JButton btnReset;
+  private JButton resetButton;
   /// Timer object that handles the events
   private Timer timer;
   /// Graphics object
@@ -62,10 +62,10 @@ public class Environment {
     this.blackNotes = new int[] { 1,4,6,9,11,13,16,18,21,23,25,28,30,33,35,37,40,42,45,
       47,49,52,54,57,59,61,64,66,69,71,73,76,78,81,83,85 };
     this.frame = new JFrame();
-    this.btnStep = new JButton();
-    this.btnStart = new JButton();
-    this.btnPause = new JButton();
-    this.btnReset = new JButton();
+    this.stepButton = new JButton();
+    this.playButton = new JButton();
+    this.pauseButton = new JButton();
+    this.resetButton = new JButton();
     this.mainPanel = new JPanel();
     this.readData("sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
     this.graphics = new Graphics(this.frame);
@@ -76,10 +76,10 @@ public class Environment {
     this.reset();
     this.createNotes();
     this.createIntesityBar();
-    this.graphics.buttonInit(btnStep, "STEP", 0, 945, 206, 66);
-    this.graphics.buttonInit(btnStart, "START", 206, 945, 206, 66);
-    this.graphics.buttonInit(btnPause, "PAUSE", 412, 945, 206, 66);
-    this.graphics.buttonInit(btnReset, "RESET", 618, 945, 206, 66);
+    this.graphics.buttonInit(stepButton, "STEP", 0, 945, 206, 66);
+    this.graphics.buttonInit(playButton, "PLAY", 206, 945, 206, 66);
+    this.graphics.buttonInit(pauseButton, "PAUSE", 412, 945, 206, 66);
+    this.graphics.buttonInit(resetButton, "RESET", 618, 945, 206, 66);
     this.graphics.mainPanelInit(this.mainPanel);
     this.graphics.frameInit("Piano Emulator", 840, 1050);
   }
@@ -207,7 +207,7 @@ public class Environment {
    * @brief Method that handles the step's event
    */
   private void step() {
-    this.btnStep.addActionListener(evt -> {
+    this.stepButton.addActionListener(evt -> {
       this.oneStep();
     });
   }
@@ -216,7 +216,7 @@ public class Environment {
    * @brief Method that handles the start's event
    */
   private void start() {
-    this.btnStart.addActionListener(evt -> {
+    this.playButton.addActionListener(evt -> {
       this.timer.start();
     });
   }
@@ -225,7 +225,7 @@ public class Environment {
    * @brief Method that handles the pause's event
    */
   private void pause() {
-    this.btnPause.addActionListener(evt -> {
+    this.pauseButton.addActionListener(evt -> {
       this.timer.stop();
     });
   }
@@ -234,7 +234,7 @@ public class Environment {
    * @brief Method that handles the reset's event
    */
   private void reset() {
-    this.btnReset.addActionListener(evt -> {
+    this.resetButton.addActionListener(evt -> {
       this.resetEnvironment();
     });
   }

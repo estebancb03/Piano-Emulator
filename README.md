@@ -12,7 +12,7 @@ To represent the song in the simulator, it is necessary to read a .poly file tha
 
 To run the simulator, simply install the extensions for java development in VScode and press the run button. The app has four buttons to manipulate the basic functions:
 * Step: Show the next 88 notes.
-* Start: Show the notes continuously.
+* Play: Show the notes continuously.
 * Pause: Pause reading and show notes.
 * Reset: Return the app to its initial state.
 
