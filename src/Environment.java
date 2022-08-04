@@ -183,7 +183,7 @@ public class Environment {
         lastNote = this.notes[this.rows - 1][column];
         intensityNote = this.intensityBar[column];
         this.graphics.inheritNoteProperties(currentNote, father);
-        this.graphics.manageIntensity(lastNote, intensityNote, this.noteWidth);
+        this.graphics.handleIntensity(lastNote, intensityNote, this.noteWidth);
       }
       try {
         if (this.control < this.binaryNotes.length - 88) {

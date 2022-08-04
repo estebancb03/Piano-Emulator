@@ -8,7 +8,7 @@ import javax.swing.*;
 /**
  * @brief Class that manages all graphic aspects of the app
  */
-public class Graphics {
+public class Graphics extends JFrame {
   /// App's frame
   private JFrame frame;
 
@@ -33,6 +33,7 @@ public class Graphics {
     this.frame.setSize(width, height);
     this.frame.setLocationRelativeTo(null);
     this.frame.setIconImage(new ImageIcon(getClass().getResource("sources/images/icon.png")).getImage());
+    this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 
   /**
@@ -152,7 +153,7 @@ public class Graphics {
    * @param intensityBarNote Note object of the note that inherits
    * @param width Note's width
    */
-  public void manageIntensity(Note regularNote, Note intensityBarNote, int width) {
+  public void handleIntensity(Note regularNote, Note intensityBarNote, int width) {
     int newHeight = 40 * regularNote.getIntensity() / 255;
     intensityBarNote.setColor(regularNote.getColor());
     intensityBarNote.setIntensity(regularNote.getIntensity());
