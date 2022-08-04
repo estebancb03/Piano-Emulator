@@ -1,4 +1,4 @@
-# Piano simulator 1.0
+# Piano emulator 1.0
 
 ## Description
 
@@ -7,6 +7,8 @@ This app visually represents a song as if a piano were playing it, following eac
 An intensity bar that represents the volume of a note has also been implemented. So, when a note plays the piano, it is represented in the intensity bar by copying its color and giving a size to the rectangle of the intensity bar according to the volume of the note, the more volume it has, the greater the height of its respective rectangle in intensity bar.
 
 To represent the song in the simulator, it is necessary to read a .poly file that basically contains the song in a binary representation.
+
+![Piano emulator](../src/../piano-polynizer2.0/src/images/app.png)
 
 ## User manual
 
