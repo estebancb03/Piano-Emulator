@@ -192,7 +192,7 @@ public class Environment {
           this.graphics.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
         } else {
           ImageIcon icon = new ImageIcon(getClass().getResource("images/icon.png"));
-          JOptionPane.showMessageDialog(null, "The song is over, press start to play again",
+          JOptionPane.showMessageDialog(null, "The song is over",
             "Information",JOptionPane.INFORMATION_MESSAGE, icon);
           this.resetEnvironment();
           break;
