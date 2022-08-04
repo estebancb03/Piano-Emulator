@@ -54,7 +54,7 @@ public class Graphics extends JFrame {
     button.setBackground(Color.black);
     button.setForeground(Color.white);
     button.setBounds(x, y, width, height);
-    button.setFont(new Font("Agency FB", Font.BOLD, 16));
+    button.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
     button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
   }
 
