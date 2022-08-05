@@ -8,7 +8,11 @@ An intensity bar that represents the volume of a note has also been implemented.
 
 To represent the song in the simulator, it is necessary to read a .poly file that basically contains the song in a binary representation.
 
-![Piano emulator](src/images/app.png)
+<center>
+
+  ![Piano emulator](src/images/app.png)
+
+</center>
 
 ## User manual
 
