@@ -4,7 +4,6 @@
 
 import java.awt.*;
 import javax.swing.*;
-import java.io.IOException;
 import javazoom.jlgui.basicplayer.BasicPlayer;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 
