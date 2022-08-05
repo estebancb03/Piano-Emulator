@@ -67,7 +67,7 @@ public class Environment {
     this.pauseButton = new JButton();
     this.resetButton = new JButton();
     this.mainPanel = new JPanel();
-    this.readData("sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
+    this.readData("resources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
     this.graphicsHandler = new GraphicsHandler(this.frame);
     this.timer = new Timer(20, evt -> this.oneStep());
     this.step();
