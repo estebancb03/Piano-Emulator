@@ -16,7 +16,7 @@ To represent the song in the simulator, it is necessary to read a .poly file tha
 
 ## User manual
 
-To run the simulator, simply install the extensions for java development in VScode and press the run button. The app has four buttons to manipulate the basic functions:
+To run the simulator, simply install the extensions for Java development in Visual Studio Code and press the run button or just open the proyect in any Java IDE. The app has four buttons to manipulate the basic functions:
 * Step: Show the next 88 notes.
 * Play: Show the notes continuously.
 * Pause: Pause reading and show notes.
@@ -27,3 +27,7 @@ Currently only plays Rimsky Korsakov - Flight of the bumblebee.
 ## Credits
 
 Project developed by Esteban Castañeda Blanco, email: esteban.castaneda@ucr.ac.cr
+
+## Navegation
+
+* [Design README](design/README.md)
