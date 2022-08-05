@@ -32,9 +32,21 @@ public class GraphicsHandler extends JFrame {
 }
 ```
 
+## SoundHandler
+
+The purpose of SoundHandler class is to extract and handle the files related to the song, both .poly and .mp3 in order to interpret it and show it to the user. This class is implemented in Java as follows:
+
+
+``` java
+public class SoundHandler {
+  private byte[] binaryData;
+  private BasicPlayer player;
+}
+```
+
 ## Environment
 
-Environment is the main class of the app, it takes care of all the logic and handling of files, arrays and matrices. It is also in charge of extracting information from the binary files in order to interpret it and show it to the user. This class has as properties all the graphic elements that are going to be used, variables that define the size of the matrix, arrays that store the information extracted from the binary files, variables that control the correct execution of the program and instances of classes to use as Timer and GraphicsHandler. The Environment class is implemented in Java as follows:
+Environment is the main class of the app, it takes care of all the logic and handling of files, arrays and matrices. This class has as properties all the graphic elements that are going to be used, variables that define the size of the matrix, arrays that store the information extracted from the binary files, variables that control the correct execution of the program, the MP3 player and instances of classes to use as Timer, GraphicsHandler and SoundHandler. This class is implemented in Java as follows:
 
 ```java
 public class Environment {
@@ -51,8 +63,10 @@ public class Environment {
   private JButton playButton;
   private JButton pauseButton;
   private JButton resetButton;
+  private BasicPlayer player;
   private Timer timer;
   private GraphicsHandler graphicsHandler;
+  private SoundHandler soundHandler;
   private Note[] intensityBar;
   private Note[][] notes;
 }
