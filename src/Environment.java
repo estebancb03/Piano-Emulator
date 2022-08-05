@@ -69,9 +69,9 @@ public class Environment {
     this.mainPanel = new JPanel();
     this.readData("sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
     this.graphics = new Graphics(this.frame);
-    this.timer = new Timer(20, e -> this.oneStep());
+    this.timer = new Timer(20, evt -> this.oneStep());
     this.step();
-    this.start();
+    this.play();
     this.pause();
     this.reset();
     this.createNotes();
@@ -211,9 +211,9 @@ public class Environment {
   }
 
   /**
-   * @brief Method that handles the start's event
+   * @brief Method that handles the play's event
    */
-  private void start() {
+  private void play() {
     this.playButton.addActionListener(evt -> {
       this.timer.start();
     });
