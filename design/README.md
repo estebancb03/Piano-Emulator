@@ -20,8 +20,34 @@ public class Note {
 This class is in charge of loading the graphic elements that are shown to the user on the screen and modifying their appearance during the execution of the app. It only has one property and it is the JFrame where all the other elements like panels and buttons are placed, for this purpose, this class inherits from the JFrame class. The GraphicsHandler class is implemented in Java as follows:
 
 ``` java
-private class GraphicsHandler extends JFrame {
+public class GraphicsHandler extends JFrame {
   private JFrame frame;
+}
+```
+
+## Environment
+
+Environment is the main class of the app, it takes care of all the logic and handling of files, arrays and matrices. It is also in charge of extracting information from the binary files in order to interpret it and show it to the user. This class has as properties all the graphic elements that are going to be used, variables that define the size of the matrix, arrays that store the information extracted from the binary files, variables that control the correct execution of the program and instances of classes to use as Timer and GraphicsHandler. The Environment class is implemented in Java as follows:
+
+```java
+public class Environment {
+  private int rows;
+  private int columns;
+  private int noteWidth;
+  private int noteHeight;
+  private int control;
+  private int[] blackNotes;
+  private byte[] binaryNotes;
+  private JFrame frame;
+  private JPanel mainPanel;
+  private JButton stepButton;
+  private JButton playButton;
+  private JButton pauseButton;
+  private JButton resetButton;
+  private Timer timer;
+  private GraphicsHandler graphicsHandler;
+  private Note[] intensityBar;
+  private Note[][] notes;
 }
 ```
 
