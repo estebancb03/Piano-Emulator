@@ -15,6 +15,16 @@ public class Note {
 }
 ```
 
+## GraphicsHandler
+
+This class is in charge of loading the graphic elements that are shown to the user on the screen and modifying their appearance during the execution of the app. It only has one property and it is the JFrame where all the other elements like panels and buttons are placed, for this purpose, this class inherits from the JFrame class. The GraphicsHandler class is implemented in Java as follows:
+
+``` java
+private class GraphicsHandler extends JFrame {
+  private JFrame frame;
+}
+```
+
 ## Navegation
 
 * [Main RAEDME](../README.md)
