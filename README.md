@@ -17,7 +17,7 @@ To represent the song in the emulator, it is necessary to read a .poly file that
 
 ## User manual
 
-To run the emulator, simply install the extensions for Java development in Visual Studio Code and press the run button or just open the project in any Java IDE. An executable .jar file is also provided to be able to run the app more quickly (```PianoEmulator1.0.jar```). The app has four buttons to manipulate the basic functions:
+To run the emulator, simply install the extensions for Java development in Visual Studio Code and press the run button or just open the project in any Java IDE. An executable .jar file is also provided to be able to run the app more quickly (```Piano-Emulator1.0.jar```). The app has four buttons to manipulate the basic functions:
 * Step: Show the next 88 notes.
 * Play: Show the notes continuously and reproduces the song.
 * Pause: Pause reading and show notes and pauses the song.
