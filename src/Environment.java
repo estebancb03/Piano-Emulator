@@ -78,7 +78,7 @@ public class Environment {
     this.soundHandler = new SoundHandler("resources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz)");
     this.binaryNotes = this.soundHandler.getBinaryData();
     this.player = soundHandler.getPlayer();
-    this.timer = new Timer(18, evt -> this.oneStep());
+    this.timer = new Timer(16, evt -> this.oneStep());
     this.step();
     this.play();
     this.pause();
