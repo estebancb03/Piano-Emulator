@@ -1,0 +1,19 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "libs/basicplayer3.0.jar",
+    "libs/commons-logging-api.jar",
+    "libs/jflac-1.2.jar",
+    "libs/jl1.0.jar",
+    "libs/jmactritonusspi1.74.jar",
+    "libs/jml-1.0b4.jar",
+    "libs/jogg-0.0.7.jar",
+    "libs/jorbis-0.0.15.jar",
+    "libs/jspeex0.9.7.jar",
+    "libs/kj_dsp1.1.jar",
+    "libs/mp3spi1.9.4.jar",
+    "libs/substance.jar",
+    "libs/tritonus_share.jar",
+    "libs/vorbisspi1.0.2.jar"
+  ]
+}
