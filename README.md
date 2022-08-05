@@ -22,7 +22,7 @@ To run the simulator, simply install the extensions for Java development in Visu
 * Pause: Pause reading and show notes.
 * Reset: Return the app to its initial state.
 
-Currently only plays Rimsky Korsakov - Flight of the bumblebee.
+Currently only plays Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff, 439 Hz).
 
 ## Credits
 
