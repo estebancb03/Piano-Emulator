@@ -8,7 +8,7 @@ import javax.swing.*;
 /**
  * @brief Class that manages all graphic aspects of the app
  */
-public class Graphics extends JFrame {
+public class GraphicsHandler extends JFrame {
   /// App's frame
   private JFrame frame;
 
@@ -16,7 +16,7 @@ public class Graphics extends JFrame {
    * @brief Constructor
    * @param frame App's frame
    */
-  public Graphics(JFrame frame) {
+  public GraphicsHandler(JFrame frame) {
     this.frame = frame;
   }
 

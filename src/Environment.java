@@ -19,7 +19,7 @@ public class Environment {
   private int noteWidth;
   /// Height of the note's JPanel
   private int noteHeight;
-  /// Indicates the current possition in the binat notes array
+  /// Indicates the current possition in the binary notes array
   private int control;
   /// Array with the black notes columns
   private int[] blackNotes;
@@ -40,7 +40,7 @@ public class Environment {
   /// Timer object that handles the events
   private Timer timer;
   /// Graphics object
-  private Graphics graphics;
+  private GraphicsHandler graphicsHandler;
   /// Note's array for the intensity bar
   private Note[] intensityBar;
   /// Note's matrix
@@ -68,7 +68,7 @@ public class Environment {
     this.resetButton = new JButton();
     this.mainPanel = new JPanel();
     this.readData("sources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
-    this.graphics = new Graphics(this.frame);
+    this.graphicsHandler = new GraphicsHandler(this.frame);
     this.timer = new Timer(20, evt -> this.oneStep());
     this.step();
     this.play();
@@ -76,12 +76,12 @@ public class Environment {
     this.reset();
     this.createNotes();
     this.createIntesityBar();
-    this.graphics.buttonInit(stepButton, "STEP", 0, 945, 206, 66);
-    this.graphics.buttonInit(playButton, "PLAY", 206, 945, 206, 66);
-    this.graphics.buttonInit(pauseButton, "PAUSE", 412, 945, 206, 66);
-    this.graphics.buttonInit(resetButton, "RESET", 618, 945, 206, 66);
-    this.graphics.mainPanelInit(this.mainPanel);
-    this.graphics.frameInit("Piano Emulator", 840, 1050);
+    this.graphicsHandler.buttonInit(stepButton, "STEP", 0, 945, 206, 66);
+    this.graphicsHandler.buttonInit(playButton, "PLAY", 206, 945, 206, 66);
+    this.graphicsHandler.buttonInit(pauseButton, "PAUSE", 412, 945, 206, 66);
+    this.graphicsHandler.buttonInit(resetButton, "RESET", 618, 945, 206, 66);
+    this.graphicsHandler.mainPanelInit(this.mainPanel);
+    this.graphicsHandler.frameInit("Piano Emulator", 840, 1050);
   }
 
   /**
@@ -108,7 +108,7 @@ public class Environment {
       for (int column = 0; column < this.columns; ++column) {
         Note note = new Note(Color.black, new JPanel(), x, y, 0);
         this.notes[row][column] = note;
-        this.graphics.addNote(note, x, y, this.noteWidth, this.noteHeight);
+        this.graphicsHandler.addNote(note, x, y, this.noteWidth, this.noteHeight);
         x += this.noteWidth;
       }
       x = 16;
@@ -127,7 +127,7 @@ public class Environment {
     for (int column = 0; column < this.columns; ++column){
       Note note = new Note(Color.black, new JPanel(), x, y, 0);
       this.intensityBar[column] = note;
-      graphics.addNote(note, x, y, this.noteWidth, this.noteHeight);
+      graphicsHandler.addNote(note, x, y, this.noteWidth, this.noteHeight);
       x += noteWidth;
     }
   }
@@ -143,10 +143,10 @@ public class Environment {
     for (int column = 0; column < this.columns; ++column) {
       for (int row = 0; row < this.rows; ++row) {
         regularNote = this.notes[row][column];
-        this.graphics.resetRegularNote(regularNote, Color.black, 0);
+        this.graphicsHandler.resetRegularNote(regularNote, Color.black, 0);
       }
       intensityNote = this.intensityBar[column];
-      this.graphics.resetIntensityBarNote(intensityNote, Color.black, 0, intensityNote.getX(), 
+      this.graphicsHandler.resetIntensityBarNote(intensityNote, Color.black, 0, intensityNote.getX(), 
         intensityNote.getIntensity(), this.noteWidth, this.noteHeight);
     }
   }
@@ -182,14 +182,14 @@ public class Environment {
         father = this.notes[row - 1][column];
         lastNote = this.notes[this.rows - 1][column];
         intensityNote = this.intensityBar[column];
-        this.graphics.inheritNoteProperties(currentNote, father);
-        this.graphics.handleIntensity(lastNote, intensityNote, this.noteWidth);
+        this.graphicsHandler.inheritNoteProperties(currentNote, father);
+        this.graphicsHandler.handleIntensity(lastNote, intensityNote, this.noteWidth);
       }
       try {
         if (this.control < this.binaryNotes.length) {
           ++this.control;
           boolean isBlackNote = this.validateBlackNote(column);
-          this.graphics.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
+          this.graphicsHandler.changeNoteColor(this.notes[0][column], this.binaryNotes[this.control], isBlackNote);
         } else {
           ImageIcon icon = new ImageIcon(getClass().getResource("images/icon.png"));
           JOptionPane.showMessageDialog(null, "The song is over",

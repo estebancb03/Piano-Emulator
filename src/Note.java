@@ -9,7 +9,7 @@ import javax.swing.*;
  * @brief Encapsulator class for the representation of a note
 */
 public class Note {
-  /// JPanle's color
+  /// JPanel's color
   private Color color;
   /// JPanel object
   private JPanel panel;
