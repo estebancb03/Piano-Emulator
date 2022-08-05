@@ -1,5 +1,12 @@
 # Data structures design
 
+The following UML diagram describes the data structure design that was implemented for the development of this app:
+
+<center>
+
+  ![Piano emulator](../src/images/dataStructuresDesign.png)
+
+</center>
 
 ## Note
 
