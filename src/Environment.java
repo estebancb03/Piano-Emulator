@@ -4,13 +4,16 @@
 
 import java.awt.*;
 import javax.swing.*;
-import java.nio.file.*;
 import java.io.IOException;
+import javazoom.jlgui.basicplayer.BasicPlayer;
+import javazoom.jlgui.basicplayer.BasicPlayerException;
 
 /**
  * @brief Class that handles the algorithms and modification of arrays and arrays
  */
 public class Environment {
+  /// Handles the mp3 player state
+  private boolean state;
   /// Number of rows
   private int rows;
   /// Number of columns
@@ -37,10 +40,14 @@ public class Environment {
   private JButton pauseButton;
   /// Button  that resets the song
   private JButton resetButton;
+  /// MP3 player
+  private BasicPlayer player;
   /// Timer object that handles the events
   private Timer timer;
-  /// Graphics object
+  /// GraphicsHandler object
   private GraphicsHandler graphicsHandler;
+  /// SoundHandler object
+  private SoundHandler soundHandler;
   /// Note's array for the intensity bar
   private Note[] intensityBar;
   /// Note's matrix
@@ -54,6 +61,7 @@ public class Environment {
    * @param noteHeight Height of note's panel
    */
   public Environment(int rows, int columns, int noteWidth, int noteHeight) {
+    this.state = false;
     this.rows = rows;
     this.columns = columns;
     this.noteWidth = noteWidth;
@@ -67,34 +75,23 @@ public class Environment {
     this.pauseButton = new JButton();
     this.resetButton = new JButton();
     this.mainPanel = new JPanel();
-    this.readData("resources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz).poly");
     this.graphicsHandler = new GraphicsHandler(this.frame);
-    this.timer = new Timer(20, evt -> this.oneStep());
+    this.soundHandler = new SoundHandler("resources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz)");
+    this.binaryNotes = this.soundHandler.getBinaryData();
+    this.player = soundHandler.getPlayer();
+    this.timer = new Timer(14, evt -> this.oneStep());
     this.step();
     this.play();
     this.pause();
     this.reset();
     this.createNotes();
-    this.createIntesityBar();
+    this.createIntensityBar();
     this.graphicsHandler.buttonInit(stepButton, "STEP", 0, 945, 206, 66);
     this.graphicsHandler.buttonInit(playButton, "PLAY", 206, 945, 206, 66);
     this.graphicsHandler.buttonInit(pauseButton, "PAUSE", 412, 945, 206, 66);
     this.graphicsHandler.buttonInit(resetButton, "RESET", 618, 945, 206, 66);
     this.graphicsHandler.mainPanelInit(this.mainPanel);
     this.graphicsHandler.frameInit("Piano Emulator", 840, 1050);
-  }
-
-  /**
-   * @brief Method that reads the data of a .poly file
-   * @param route File's route
-   */
-  private void readData(String route) {
-    Path path = Paths.get(route);
-    try {
-      this.binaryNotes = Files.readAllBytes(path);
-    } catch (IOException e) {
-      System.out.println(e);
-    }
   }
 
   /**
@@ -120,7 +117,7 @@ public class Environment {
    * @brief Method that creates a new note of the intensity bar and 
    *        shows it in the screen
    */
-  private void createIntesityBar() {
+  private void createIntensityBar() {
     int x = 16;
     int y = 39;
     this.intensityBar = new Note[this.columns];
@@ -137,6 +134,7 @@ public class Environment {
    */
   private void resetEnvironment() {
     this.timer.stop();
+    this.state = false;
     this.control = 0;
     Note regularNote;
     Note intensityNote;
@@ -215,7 +213,15 @@ public class Environment {
    */
   private void play() {
     this.playButton.addActionListener(evt -> {
-      this.timer.start();
+      try {
+        this.timer.start();
+        if(this.state == false) 
+          this.player.play();
+        else
+          this.player.resume(); 
+      } catch (BasicPlayerException e) {
+        System.err.println(e);
+      }
     });
   }
 
@@ -224,7 +230,13 @@ public class Environment {
    */
   private void pause() {
     this.pauseButton.addActionListener(evt -> {
-      this.timer.stop();
+      try {
+        this.timer.stop();
+        this.player.pause();
+        this.state = true;
+      } catch (BasicPlayerException e) {
+        System.err.println(e);
+      }
     });
   }
   
@@ -233,7 +245,12 @@ public class Environment {
    */
   private void reset() {
     this.resetButton.addActionListener(evt -> {
-      this.resetEnvironment();
+      try {
+        this.resetEnvironment();
+        this.player.stop();
+      } catch (BasicPlayerException e) {
+        System.err.println(e);
+      }
     });
   }
 }
