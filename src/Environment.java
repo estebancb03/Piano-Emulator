@@ -4,15 +4,11 @@
 
 import java.awt.*;
 import javax.swing.*;
-import javazoom.jlgui.basicplayer.BasicPlayer;
-import javazoom.jlgui.basicplayer.BasicPlayerException;
 
 /**
  * @brief Class that handles the algorithms and modification of arrays and arrays
  */
 public class Environment {
-  /// Handles the mp3 player state
-  private boolean state;
   /// Number of rows
   private int rows;
   /// Number of columns
@@ -39,8 +35,6 @@ public class Environment {
   private JButton pauseButton;
   /// Button  that resets the song
   private JButton resetButton;
-  /// MP3 player
-  private BasicPlayer player;
   /// Timer object that handles the events
   private Timer timer;
   /// GraphicsHandler object
@@ -60,7 +54,6 @@ public class Environment {
    * @param noteHeight Height of note's panel
    */
   public Environment(int rows, int columns, int noteWidth, int noteHeight) {
-    this.state = false;
     this.rows = rows;
     this.columns = columns;
     this.noteWidth = noteWidth;
@@ -77,8 +70,7 @@ public class Environment {
     this.graphicsHandler = new GraphicsHandler(this.frame);
     this.soundHandler = new SoundHandler("resources/Rimsky Korsakov - Flight of the bumblebee (arr. Rachmaninoff) (439 Hz)");
     this.binaryNotes = this.soundHandler.getBinaryData();
-    this.player = soundHandler.getPlayer();
-    this.timer = new Timer(16, evt -> this.oneStep());
+    this.timer = new Timer(15, evt -> this.oneStep());
     this.step();
     this.play();
     this.pause();
@@ -133,7 +125,6 @@ public class Environment {
    */
   private void resetEnvironment() {
     this.timer.stop();
-    this.state = false;
     this.control = 0;
     Note regularNote;
     Note intensityNote;
@@ -212,15 +203,7 @@ public class Environment {
    */
   private void play() {
     this.playButton.addActionListener(evt -> {
-      try {
-        this.timer.start();
-        if(this.state == false) 
-          this.player.play();
-        else
-          this.player.resume(); 
-      } catch (BasicPlayerException e) {
-        System.err.println(e);
-      }
+      this.timer.start();
     });
   }
 
@@ -229,13 +212,7 @@ public class Environment {
    */
   private void pause() {
     this.pauseButton.addActionListener(evt -> {
-      try {
-        this.timer.stop();
-        this.player.pause();
-        this.state = true;
-      } catch (BasicPlayerException e) {
-        System.err.println(e);
-      }
+      this.timer.stop();
     });
   }
   
@@ -244,12 +221,7 @@ public class Environment {
    */
   private void reset() {
     this.resetButton.addActionListener(evt -> {
-      try {
-        this.resetEnvironment();
-        this.player.stop();
-      } catch (BasicPlayerException e) {
-        System.err.println(e);
-      }
+      this.resetEnvironment();
     });
   }
 }
