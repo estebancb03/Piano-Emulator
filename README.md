@@ -1,4 +1,4 @@
-# Piano emulator 1.1
+# Piano emulator 1.2
 
 ## Description
 
