@@ -50,6 +50,7 @@ Environment is the main class of the app, it takes care of all the logic and han
 
 ```java
 public class Environment {
+  private boolean state;
   private int rows;
   private int columns;
   private int noteWidth;
