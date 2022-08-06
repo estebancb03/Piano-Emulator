@@ -65,12 +65,13 @@ public class GraphicsHandler extends JFrame {
   public void mainPanelInit(JPanel panel) {
     this.frame.add(panel);
     panel.add(new JLabel(" "));
-    JLabel image = new JLabel();
-    panel.add(image);
     panel.setVisible(true);
     panel.setBackground(Color.black);
-    ImageIcon pianoImage = new ImageIcon(getClass().getResource("images/piano.png"));
-    image.setIcon(new ImageIcon(pianoImage.getImage().getScaledInstance(828, 155, Image.SCALE_SMOOTH)));
+    JLabel imageLabel = new JLabel();
+    panel.add(imageLabel);
+    imageLabel.setBounds(-14, 138, 1015, 135);
+    ImageIcon image = new ImageIcon(getClass().getResource("images/piano.png"));
+    imageLabel.setIcon(new ImageIcon(image.getImage().getScaledInstance(1015, 155, Image.SCALE_SMOOTH)));
   }
 
   /**
@@ -154,7 +155,7 @@ public class GraphicsHandler extends JFrame {
    * @param width Note's width
    */
   public void handleIntensity(Note regularNote, Note intensityBarNote, int width) {
-    int newHeight = 40 * regularNote.getIntensity() / 255;
+    int newHeight = 50 * regularNote.getIntensity() / 255;
     intensityBarNote.setColor(regularNote.getColor());
     intensityBarNote.setIntensity(regularNote.getIntensity());
     intensityBarNote.getPanel().setBackground(regularNote.getColor());

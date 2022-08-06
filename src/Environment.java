@@ -77,19 +77,19 @@ public class Environment {
     this.reset();
     this.createNotes();
     this.createIntensityBar();
-    this.graphicsHandler.buttonInit(stepButton, "STEP", 0, 945, 206, 66);
-    this.graphicsHandler.buttonInit(playButton, "PLAY", 206, 945, 206, 66);
-    this.graphicsHandler.buttonInit(pauseButton, "PAUSE", 412, 945, 206, 66);
-    this.graphicsHandler.buttonInit(resetButton, "RESET", 618, 945, 206, 66);
+    this.graphicsHandler.buttonInit(stepButton, "STEP", 0, 945, 247, 66);
+    this.graphicsHandler.buttonInit(playButton, "PLAY", 247, 945, 247, 66);
+    this.graphicsHandler.buttonInit(pauseButton, "PAUSE", 494, 945, 247, 66);
+    this.graphicsHandler.buttonInit(resetButton, "RESET", 741, 945, 248, 66);
     this.graphicsHandler.mainPanelInit(this.mainPanel);
-    this.graphicsHandler.frameInit("Piano Emulator", 840, 1050);
+    this.graphicsHandler.frameInit("Piano Emulator", 1005, 1050);
   }
 
   /**
    * @brief Method that creates a new note and shows it in the screen
    */
   private void createNotes() {
-    int x = 16;
+    int x = 10;
     int y = 930;
     this.notes = new Note[this.rows][this.columns];
     for (int row = 0; row < this.rows; ++row) {
@@ -99,7 +99,7 @@ public class Environment {
         this.graphicsHandler.addNote(note, x, y, this.noteWidth, this.noteHeight);
         x += this.noteWidth;
       }
-      x = 16;
+      x = 10;
       y -= this.noteHeight;
     }
   }
@@ -109,7 +109,7 @@ public class Environment {
    *        shows it in the screen
    */
   private void createIntensityBar() {
-    int x = 16;
+    int x = 10;
     int y = 39;
     this.intensityBar = new Note[this.columns];
     for (int column = 0; column < this.columns; ++column){

@@ -4,6 +4,6 @@
 
 public class Main {
   public static void main(String[] args) {
-    new Environment(78, 88, 9, 10);
+    new Environment(78, 88, 11, 10);
   }
 }
